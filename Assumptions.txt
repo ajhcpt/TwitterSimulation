@@ -1,0 +1,2 @@
+usernames are unique.
+user file will only be loaded on application startup.

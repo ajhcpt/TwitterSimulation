@@ -1,30 +1,46 @@
 package ag.twittersimulation.user;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class User {
+public class User implements Comparable<User> {
 	private String name;
-	private List<User> follows;
-	private List<User> imFollowing;
+	private ArrayList<String> follows;
 	
 	User(String name) {
-		this.name = name.toUpperCase();
-	}
-	
-	public void AddFollower(User follower) {
-		if(!follows.contains(follower)) {
-			follows.add(follower);
-		}
-	}
-	
-	public void AddFollowing(User following) {
-		if(!imFollowing.contains(following)) {
-			imFollowing.add(following);
-		}
+		this.name = name;
 	}
 
+	User(String name, ArrayList<String> follows) {
+		this.name = name;
+		this.follows = follows;
+	}
+
+	
+	public void AddFollower(String follows) {
+		if(!this.follows.contains(follows)) {
+			this.follows.add(follows);
+		}
+	}
+	
+	public void AddFollower(ArrayList<String> followsList) {
+		if (follows != null) {		
+			for (String follow: followsList) {
+				if(!follows.contains(follow)) {
+					follows.add(follow);
+				}
+			}
+		} else {
+			follows = followsList;
+		}
+	}
+	
 	public String getName() {
 		return name;
+	}
+
+	@Override
+	public int compareTo(User compareUser) {
+		return this.name.compareTo(compareUser.name);
 	}
 	
 }

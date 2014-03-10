@@ -12,7 +12,7 @@ import ag.twittersimulation.user.AsciiFileUserLoader;
 import ag.twittersimulation.user.TextFileUserLoader;
 
 public class UserReaderFactory {
-	public static IUserLoader getUserReader(String encoding, String fileName) throws UnsupportedEncodingException, FileNotFoundException {
+	public static IUserLoader getUserLoader(String encoding, String fileName) throws UnsupportedEncodingException, FileNotFoundException {
 		IUserLoader reader = null;
 		
 		switch (encoding.toUpperCase()) {

@@ -1,7 +1,10 @@
 package ag.twittersimulation.user;
 
 import java.io.BufferedReader;
-import java.util.List;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
 import ag.twittersimulation.interfaces.IUserLoader;
 
@@ -11,11 +14,40 @@ public class TextFileUserLoader implements IUserLoader {
 	public TextFileUserLoader(BufferedReader reader) {
 		this.reader = reader;
 	}
-	
-	@Override
-	public List<User> LoadDistinctUserList() {
-		// TODO Auto-generated method stub
-		return null;
+
+	public HashMap<String, User> LoadUsers() throws IOException {
+		HashMap<String, User> users = new HashMap<String, User>();
+		
+		String lineFromUserFile = null;
+		while ((lineFromUserFile = reader.readLine()) != null) {
+			int followerNameEnds = lineFromUserFile.indexOf(" follows ");
+			int followeeNamesStart = followerNameEnds + 9;
+			String followerName =  lineFromUserFile.substring(0, followerNameEnds);
+			ArrayList<String> followeeNames = new ArrayList<String>(Arrays.asList(lineFromUserFile.substring(followeeNamesStart).split(", ")));
+						
+			if(users.get(followerName) == null) {
+				User followerUser = new User(followerName, followeeNames);
+				users.put(followerName, followerUser);
+			} else {
+				User existingUser = users.get(followerName);
+				existingUser.AddFollower(followeeNames);
+				users.put(followerName, existingUser);
+			}
+			
+			for (String followee: followeeNames) {
+				if(users.get(followee) == null) {
+					User followeeUser = new User(followee, null);
+					if(users.get(followeeUser) == null) {
+						users.put(followee, followeeUser);
+					}
+				}
+				 
+			}
+			
+		}
+		
+		return users;
 	}
+	
 
 }

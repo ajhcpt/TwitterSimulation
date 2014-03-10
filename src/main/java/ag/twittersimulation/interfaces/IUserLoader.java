@@ -1,9 +1,11 @@
 package ag.twittersimulation.interfaces;
 
-import java.util.List;
+import java.io.IOException;
+import java.util.HashMap;
+
 import ag.twittersimulation.user.User;
 
 public interface IUserLoader {
-	List<User> LoadDistinctUserList();
+	public HashMap<String, User> LoadUsers() throws IOException;
 	
 }

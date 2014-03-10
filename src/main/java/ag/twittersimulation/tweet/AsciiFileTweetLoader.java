@@ -1,9 +1,11 @@
 package ag.twittersimulation.tweet;
 
 import java.io.BufferedReader;
+import java.util.HashMap;
 import java.util.List;
 
 import ag.twittersimulation.interfaces.ITweetLoader;
+import ag.twittersimulation.user.User;
 
 public class AsciiFileTweetLoader implements ITweetLoader {
 BufferedReader reader;
@@ -13,7 +15,7 @@ BufferedReader reader;
 	}
 
 	@Override
-	public List<Tweet> LoadTweets() {
+	public HashMap<User, List<Tweet>> LoadTweets() {
 		// TODO Auto-generated method stub
 		return null;
 	}
