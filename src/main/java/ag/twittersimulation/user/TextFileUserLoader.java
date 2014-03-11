@@ -23,9 +23,10 @@ public class TextFileUserLoader implements IUserLoader {
 			int followerNameEnds = lineFromUserFile.indexOf(" follows ");
 			int followeeNamesStart = followerNameEnds + 9;
 			String followerName =  lineFromUserFile.substring(0, followerNameEnds);
-			ArrayList<String> followeeNames = new ArrayList<String>(Arrays.asList(lineFromUserFile.substring(followeeNamesStart).split(", ")));
+			String strFolloweeNames = RemoveSpaces(lineFromUserFile.substring(followeeNamesStart));
+			ArrayList<String> followeeNames = new ArrayList<String>(Arrays.asList(strFolloweeNames.split(",")));
 						
-			if(users.get(followerName) == null) {
+			if (users.get(followerName) == null) {
 				User followerUser = new User(followerName, followeeNames);
 				users.put(followerName, followerUser);
 			} else {
@@ -35,19 +36,29 @@ public class TextFileUserLoader implements IUserLoader {
 			}
 			
 			for (String followee: followeeNames) {
-				if(users.get(followee) == null) {
+				if (users.get(followee) == null) {
 					User followeeUser = new User(followee, null);
-					if(users.get(followeeUser) == null) {
+					if (users.get(followeeUser) == null) {
 						users.put(followee, followeeUser);
 					}
-				}
-				 
-			}
-			
+				}	 
+			}			
 		}
-		
 		return users;
 	}
 	
-
+	private String RemoveSpaces(String stringWithSpaces) {
+		char[] charArrayWithSpaces = stringWithSpaces.toCharArray();
+		StringBuilder stringWithoutSpaces = new StringBuilder();
+		
+		for (char c: charArrayWithSpaces) {
+			if (c != ' ') {
+				stringWithoutSpaces.append(c);
+			}
+		}
+		return stringWithoutSpaces.toString();
+		
+	}
+	
+	
 }
