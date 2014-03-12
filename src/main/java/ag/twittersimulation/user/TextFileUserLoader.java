@@ -21,8 +21,7 @@ public class TextFileUserLoader extends UserLoader {
 		while ((lineFromUserFile = reader.readLine()) != null) {
 			String followerName =  GetFollowerName(lineFromUserFile);
 			ArrayList<String> followeeNames = GetFolloweeNames(lineFromUserFile);
-			AddFollowerUser(users, followerName, followeeNames);
-			AddFolloweeUsers(users, followeeNames);		
+			users = AddUsers(users, followerName, followeeNames);	
 		}
 		return users;
 	}

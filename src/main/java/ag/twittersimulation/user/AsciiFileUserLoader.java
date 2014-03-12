@@ -35,8 +35,7 @@ public class AsciiFileUserLoader extends UserLoader {
 		for (String userString: userFile) {
 			String followerName =  GetFollowerName(userString);
 			ArrayList<String> followeeNames = GetFolloweeNames(userString);
-			AddFollowerUser(users, followerName, followeeNames);
-			AddFolloweeUsers(users, followeeNames);			
+			users = AddUsers(users, followerName, followeeNames);			
 		}
 		return users;		
 	}

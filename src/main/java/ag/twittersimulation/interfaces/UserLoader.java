@@ -36,26 +36,26 @@ public abstract class UserLoader {
 		return followeeNames;
 	}
 
-	protected static void AddFollowerUser(HashMap<String, User> users, String followerName, ArrayList<String> followeeNames) {
-		if (users.get(followerName) == null) {
+	protected static HashMap<String, User> AddUsers(HashMap<String, User> users, String followerName, ArrayList<String> followeeNames) {
+		HashMap<String, User> tempUsers = users;
+		if (tempUsers.get(followerName) == null) {
 			User followerUser = new User(followerName, followeeNames);
-			users.put(followerName, followerUser);
+			tempUsers.put(followerName, followerUser);
 		} else {
-			User existingUser = users.get(followerName);
+			User existingUser = tempUsers.get(followerName);
 			existingUser.AddFollower(followeeNames);
-			users.put(followerName, existingUser);
+			tempUsers.put(followerName, existingUser);
 		}
-	}
-
-	protected static void AddFolloweeUsers(HashMap<String, User> users, ArrayList<String> followeeNames) {
+		
 		for (String followee: followeeNames) {
-			if (users.get(followee) == null) {
+			if (tempUsers.get(followee) == null) {
 				User followeeUser = new User(followee, null);
-				if (users.get(followeeUser) == null) {
-					users.put(followee, followeeUser);
+				if (tempUsers.get(followeeUser) == null) {
+					tempUsers.put(followee, followeeUser);
 				}
 			}	 
-		}			
+		}		
+		return tempUsers;
 	}
 	
 }
