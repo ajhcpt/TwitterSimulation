@@ -4,10 +4,10 @@ import java.io.BufferedReader;
 import java.util.HashMap;
 import java.util.List;
 
-import ag.twittersimulation.interfaces.ITweetLoader;
+import ag.twittersimulation.interfaces.TweetLoader;
 import ag.twittersimulation.user.User;
 
-public class AsciiFileTweetLoader implements ITweetLoader {
+public class AsciiFileTweetLoader extends TweetLoader {
 BufferedReader reader;
 	
 	public AsciiFileTweetLoader(BufferedReader reader) {

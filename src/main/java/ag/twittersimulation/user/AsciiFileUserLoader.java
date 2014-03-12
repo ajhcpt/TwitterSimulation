@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-import ag.twittersimulation.interfaces.IUserLoader;
+import ag.twittersimulation.interfaces.UserLoader;
 
-public class AsciiFileUserLoader implements IUserLoader {
+public class AsciiFileUserLoader extends UserLoader {
 	BufferedReader reader;
 	
 	public AsciiFileUserLoader(BufferedReader reader) {
@@ -20,16 +20,26 @@ public class AsciiFileUserLoader implements IUserLoader {
 		HashMap<String, User> users = new HashMap<String, User>();
 		char[] asciiCharacter = new char[3];
 		char[] space = new char[1];
-		ArrayList<Character> charUsers = new ArrayList<Character>();
+		StringBuilder stringUsers = new StringBuilder(); 
 		
 		while (reader.read(asciiCharacter, 0, 3) != -1) {
-			//while not encountering the 013 (vertical tab) character, add to a string. 
-			//Once the 013 is encountered, add the existing string to a string list and start creating a new string.
-			
 			String asciiChar = new String(asciiCharacter);
+			int asciiVal =  Integer.parseInt(asciiChar);
+			stringUsers.append(String.valueOf(Character.toChars(asciiVal)));
+			
 			reader.read(space, 0, 1);
 		}
-		return null;
+		
+		ArrayList<String> userFile = new ArrayList<String>(Arrays.asList(stringUsers.toString().split("\r")));
+		
+		for (String userString: userFile) {
+			String followerName =  GetFollowerName(userString);
+			ArrayList<String> followeeNames = GetFolloweeNames(userString);
+			AddFollowerUser(users, followerName, followeeNames);
+			AddFolloweeUsers(users, followeeNames);			
+		}
+		return users;		
 	}
 		
+	
 }

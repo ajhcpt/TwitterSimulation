@@ -6,11 +6,11 @@ public class User implements Comparable<User> {
 	private String name;
 	private ArrayList<String> follows;
 	
-	User(String name) {
+	public User(String name) {
 		this.name = name;
 	}
 
-	User(String name, ArrayList<String> follows) {
+	public User(String name, ArrayList<String> follows) {
 		this.name = name;
 		this.follows = follows;
 	}
