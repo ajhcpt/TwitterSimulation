@@ -3,7 +3,7 @@ package ag.twittersimulation.user;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 public class TextFileUserLoader extends UserLoader {
 	BufferedReader reader;
@@ -12,8 +12,8 @@ public class TextFileUserLoader extends UserLoader {
 		this.reader = reader;
 	}
 
-	public HashMap<String, User> LoadUsers() throws IOException {
-		HashMap<String, User> users = new HashMap<String, User>();
+	public TreeMap<String, User> LoadUsers() throws IOException {
+		TreeMap<String, User> users = new TreeMap<String, User>();
 		
 		String lineFromUserFile = null;
 		while ((lineFromUserFile = reader.readLine()) != null) {

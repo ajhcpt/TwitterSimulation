@@ -38,7 +38,7 @@ public class User implements Comparable<User> {
 		return name;
 	}
 	
-	public ArrayList<String> getFollowers() {
+	public ArrayList<String> getFollows() {
 		return follows;
 	}
 

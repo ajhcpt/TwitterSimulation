@@ -11,20 +11,20 @@ import ag.twittersimulation.tweet.AsciiFileTweetLoader;
 import ag.twittersimulation.tweet.TextFileTweetLoader;
 import ag.twittersimulation.tweet.TweetLoader;
 
-public class TweetReaderFactory {
-	public static TweetLoader getTweetReader(String encoding, String fileName) throws FileNotFoundException, UnsupportedEncodingException {
-		TweetLoader reader = null;
+public class TweetLoaderFactory {
+	public static TweetLoader getTweetLoader(String encoding, String fileName) throws FileNotFoundException, UnsupportedEncodingException {
+		TweetLoader loader = null;
 		
 		switch (encoding.toUpperCase()) {
 		case "ASCII": 
-			reader = new AsciiFileTweetLoader(new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "US-ASCII")));
+			loader = new AsciiFileTweetLoader(new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "US-ASCII")));
 			break;
 			
 		case "PLAINTEXT":
-			reader = new TextFileTweetLoader(new BufferedReader(new FileReader(fileName)));
+			loader = new TextFileTweetLoader(new BufferedReader(new FileReader(fileName)));
 			break;
 		}
-		return reader;
+		return loader;
 		
 	}
 }

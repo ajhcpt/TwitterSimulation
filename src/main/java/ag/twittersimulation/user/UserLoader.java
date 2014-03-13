@@ -3,10 +3,10 @@ package ag.twittersimulation.user;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 public abstract class UserLoader {
-	public abstract HashMap<String, User> LoadUsers() throws IOException;
+	public abstract TreeMap<String, User> LoadUsers() throws IOException;
 	
 	protected static String RemoveSpaces(String stringWithSpaces) {
 		char[] charArrayWithSpaces = stringWithSpaces.toCharArray();
@@ -34,8 +34,8 @@ public abstract class UserLoader {
 		return followeeNames;
 	}
 
-	protected static HashMap<String, User> AddUsers(HashMap<String, User> users, String followerName, ArrayList<String> followeeNames) {
-		HashMap<String, User> tempUsers = users;
+	protected static TreeMap<String, User> AddUsers(TreeMap<String, User> users, String followerName, ArrayList<String> followeeNames) {
+		TreeMap<String, User> tempUsers = users;
 		if (tempUsers.get(followerName) == null) {
 			User followerUser = new User(followerName, followeeNames);
 			tempUsers.put(followerName, followerUser);
@@ -47,10 +47,8 @@ public abstract class UserLoader {
 		
 		for (String followee: followeeNames) {
 			if (tempUsers.get(followee) == null) {
-				User followeeUser = new User(followee, null);
-				if (tempUsers.get(followeeUser) == null) {
-					tempUsers.put(followee, followeeUser);
-				}
+				User followeeUser = new User(followee);
+				tempUsers.put(followee, followeeUser);
 			}	 
 		}		
 		return tempUsers;

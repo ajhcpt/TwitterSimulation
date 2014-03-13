@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 public class AsciiFileUserLoader extends UserLoader {
 	BufferedReader reader;
@@ -14,8 +14,8 @@ public class AsciiFileUserLoader extends UserLoader {
 	}
 
 	@Override
-	public HashMap<String, User> LoadUsers() throws IOException {
-		HashMap<String, User> users = new HashMap<String, User>();
+	public TreeMap<String, User> LoadUsers() throws IOException {
+		TreeMap<String, User> users = new TreeMap<String, User>();
 		char[] asciiCharacter = new char[3];
 		char[] space = new char[1];
 		StringBuilder stringUsers = new StringBuilder(); 

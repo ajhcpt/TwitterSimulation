@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.TreeMap;
 
 import ag.twittersimulation.user.User;
 
@@ -16,8 +17,8 @@ BufferedReader reader;
 	}
 
 	@Override
-	public HashMap<User, ArrayList<String>> LoadTweets(HashMap<String, User> users) throws IOException {
-		HashMap<User, ArrayList<String>> tweets = new HashMap<User, ArrayList<String>>();
+	public HashMap<User, ArrayList<Tweet>> LoadTweets(TreeMap<String, User> users) throws IOException {
+		HashMap<User, ArrayList<Tweet>> tweets = new HashMap<User, ArrayList<Tweet>>();
 		char[] asciiCharacter = new char[3];
 		char[] space = new char[1];
 		StringBuilder stringTweets = new StringBuilder(); 
@@ -39,9 +40,9 @@ BufferedReader reader;
 			
 			if (users.get(username) == null) {
 				User newUser = new User(username);
-				tweets = AddTweet(tweets, newUser, usersTweet);
+				tweets = AddTweet(tweets, newUser, new Tweet(usersTweet));
 			} else {
-				tweets = AddTweet(tweets, users.get(username), usersTweet);
+				tweets = AddTweet(tweets, users.get(username), new Tweet(usersTweet));
 			}
 		}
 		return tweets;

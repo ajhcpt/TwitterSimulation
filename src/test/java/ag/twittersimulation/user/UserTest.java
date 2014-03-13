@@ -38,7 +38,7 @@ public class UserTest {
 		listOfFollowers.add("Jane");
 		User user = new User("Phil", listOfFollowers);
 
-		assertEquals(5, user.getFollowers().size());
+		assertEquals(5, user.getFollows().size());
 	}
 
 	@Test
@@ -47,7 +47,7 @@ public class UserTest {
 		user.AddFollower("James");
 		user.AddFollower("Peter");
 		user.AddFollower("Jenny");
-		assertEquals(3, user.getFollowers().size());
+		assertEquals(3, user.getFollows().size());
 	}
 	
 	@Test
@@ -60,7 +60,7 @@ public class UserTest {
 		listOfFollowers.add("Paul");
 		listOfFollowers.add("Jane");
 		user.AddFollower(listOfFollowers);
-		assertEquals(5, user.getFollowers().size());
+		assertEquals(5, user.getFollows().size());
 	}
 
 }
