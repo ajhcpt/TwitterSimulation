@@ -1,4 +1,4 @@
-package ag.twittersimulation.interfaces;
+package ag.twittersimulation.tweet;
 
 import java.io.IOException;
 import java.util.ArrayList;

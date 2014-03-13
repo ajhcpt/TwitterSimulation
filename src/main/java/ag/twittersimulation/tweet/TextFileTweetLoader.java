@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import ag.twittersimulation.interfaces.TweetLoader;
 import ag.twittersimulation.user.User;
 
 public class TextFileTweetLoader extends TweetLoader {
@@ -21,9 +20,16 @@ public class TextFileTweetLoader extends TweetLoader {
 		
 		String lineFromTweetFile = null;
 		while ((lineFromTweetFile = reader.readLine()) != null) {
+			//This functionality is commom between both readers/loaders. should be moved to one location in the parent class
 			String username = GetUsername(lineFromTweetFile);
 			String usersTweet = GetTweet(lineFromTweetFile);
-			tweets = AddTweet(tweets, users.get(username), usersTweet);
+			
+			if (users.get(username) == null) {
+				User newUser = new User(username);
+				tweets = AddTweet(tweets, newUser, usersTweet);
+			} else {
+				tweets = AddTweet(tweets, users.get(username), usersTweet);
+			}
 		}
 		return tweets;		
 	}

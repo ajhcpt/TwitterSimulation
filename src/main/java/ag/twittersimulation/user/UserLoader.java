@@ -1,11 +1,9 @@
-package ag.twittersimulation.interfaces;
+package ag.twittersimulation.user;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-
-import ag.twittersimulation.user.User;
 
 public abstract class UserLoader {
 	public abstract HashMap<String, User> LoadUsers() throws IOException;

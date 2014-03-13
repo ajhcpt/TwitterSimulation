@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-import ag.twittersimulation.interfaces.UserLoader;
-
 public class AsciiFileUserLoader extends UserLoader {
 	BufferedReader reader;
 	

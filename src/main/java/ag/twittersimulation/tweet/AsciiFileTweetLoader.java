@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import ag.twittersimulation.interfaces.TweetLoader;
+
 import ag.twittersimulation.user.User;
 
 public class AsciiFileTweetLoader extends TweetLoader {
@@ -33,9 +33,16 @@ BufferedReader reader;
 		ArrayList<String> tweetFile = new ArrayList<String>(Arrays.asList(stringTweets.toString().split("\r")));
 		
 		for (String tweet: tweetFile) {
+			//This functionality is commom between both readers/loaders. should be moved to one location in the parent class
 			String username = GetUsername(tweet);
 			String usersTweet = GetTweet(tweet);
-			tweets = AddTweet(tweets, users.get(username), usersTweet);
+			
+			if (users.get(username) == null) {
+				User newUser = new User(username);
+				tweets = AddTweet(tweets, newUser, usersTweet);
+			} else {
+				tweets = AddTweet(tweets, users.get(username), usersTweet);
+			}
 		}
 		return tweets;
 	}

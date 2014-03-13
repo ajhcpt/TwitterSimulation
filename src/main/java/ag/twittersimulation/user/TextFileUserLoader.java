@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import ag.twittersimulation.interfaces.UserLoader;
-
 public class TextFileUserLoader extends UserLoader {
 	BufferedReader reader;
 	

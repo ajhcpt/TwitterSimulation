@@ -37,6 +37,10 @@ public class User implements Comparable<User> {
 	public String getName() {
 		return name;
 	}
+	
+	public ArrayList<String> getFollowers() {
+		return follows;
+	}
 
 	@Override
 	public int compareTo(User compareUser) {

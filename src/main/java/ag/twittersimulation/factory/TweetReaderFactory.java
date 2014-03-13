@@ -7,9 +7,9 @@ import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 
-import ag.twittersimulation.interfaces.TweetLoader;
 import ag.twittersimulation.tweet.AsciiFileTweetLoader;
 import ag.twittersimulation.tweet.TextFileTweetLoader;
+import ag.twittersimulation.tweet.TweetLoader;
 
 public class TweetReaderFactory {
 	public static TweetLoader getTweetReader(String encoding, String fileName) throws FileNotFoundException, UnsupportedEncodingException {

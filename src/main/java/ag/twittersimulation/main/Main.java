@@ -9,9 +9,9 @@ import java.util.Properties;
 
 import ag.twittersimulation.factory.TweetReaderFactory;
 import ag.twittersimulation.factory.UserReaderFactory;
-import ag.twittersimulation.interfaces.TweetLoader;
-import ag.twittersimulation.interfaces.UserLoader;
+import ag.twittersimulation.tweet.TweetLoader;
 import ag.twittersimulation.user.User;
+import ag.twittersimulation.user.UserLoader;
 
 public class Main {
 

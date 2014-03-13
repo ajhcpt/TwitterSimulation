@@ -7,9 +7,9 @@ import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 
-import ag.twittersimulation.interfaces.UserLoader;
 import ag.twittersimulation.user.AsciiFileUserLoader;
 import ag.twittersimulation.user.TextFileUserLoader;
+import ag.twittersimulation.user.UserLoader;
 
 public class UserReaderFactory {
 	public static UserLoader getUserLoader(String encoding, String fileName) throws UnsupportedEncodingException, FileNotFoundException {
