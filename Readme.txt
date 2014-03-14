@@ -17,3 +17,4 @@ Logging.
 Instead of using a list of Strings for the other users a user follows, it should have been a list of users. That would have meant that I would have had to override the equals for User object comparison.
 Struggled with variable naming. Should the variable name contain the type as well? i.e usersHashMap?
 Is it good practice to have a switch statement based on strings? What would be a better way?
+How should files be structured in Packages? was I correct in the way I categorized them?
