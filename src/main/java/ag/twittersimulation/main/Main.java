@@ -12,10 +12,10 @@ import ag.twittersimulation.factory.OutputTweetsFactory;
 import ag.twittersimulation.factory.TweetLoaderFactory;
 import ag.twittersimulation.factory.UserLoaderFactory;
 import ag.twittersimulation.interfaces.IOutputTweets;
+import ag.twittersimulation.tweet.AbstractTweetLoader;
 import ag.twittersimulation.tweet.Tweet;
-import ag.twittersimulation.tweet.TweetLoader;
+import ag.twittersimulation.user.AbstractUserLoader;
 import ag.twittersimulation.user.User;
-import ag.twittersimulation.user.UserLoader;
 
 public class Main {
 
@@ -23,8 +23,8 @@ public class Main {
 		Properties config = new Properties();
 		try {
 			config.load(new FileInputStream(args[0]));
-			UserLoader userLoader = UserLoaderFactory.getUserLoader(config.getProperty("userfileformat"), config.getProperty("userfile"));
-			TweetLoader tweetLoader = TweetLoaderFactory.getTweetLoader(config.getProperty("tweetfileformat"), config.getProperty("tweetfile"));
+			AbstractUserLoader userLoader = UserLoaderFactory.getUserLoader(config.getProperty("userfileformat"), config.getProperty("userfile"));
+			AbstractTweetLoader tweetLoader = TweetLoaderFactory.getTweetLoader(config.getProperty("tweetfileformat"), config.getProperty("tweetfile"));
 			
 			TreeMap<String, User> tmUsers = userLoader.LoadUsers();
 			HashMap<User, ArrayList<Tweet>> hmTweets = tweetLoader.LoadTweets(tmUsers);

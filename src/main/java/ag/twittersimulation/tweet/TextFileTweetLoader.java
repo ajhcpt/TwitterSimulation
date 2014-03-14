@@ -8,7 +8,7 @@ import java.util.TreeMap;
 
 import ag.twittersimulation.user.User;
 
-public class TextFileTweetLoader extends TweetLoader {
+public class TextFileTweetLoader extends AbstractTweetLoader {
 	BufferedReader reader;
 	
 	public TextFileTweetLoader(BufferedReader reader) {

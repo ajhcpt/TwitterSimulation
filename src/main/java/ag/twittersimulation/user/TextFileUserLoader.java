@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
-public class TextFileUserLoader extends UserLoader {
+public class TextFileUserLoader extends AbstractUserLoader {
 	BufferedReader reader;
 	
 	public TextFileUserLoader(BufferedReader reader) {

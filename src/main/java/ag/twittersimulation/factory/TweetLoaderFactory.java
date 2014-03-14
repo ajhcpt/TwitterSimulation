@@ -7,13 +7,13 @@ import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 
+import ag.twittersimulation.tweet.AbstractTweetLoader;
 import ag.twittersimulation.tweet.AsciiFileTweetLoader;
 import ag.twittersimulation.tweet.TextFileTweetLoader;
-import ag.twittersimulation.tweet.TweetLoader;
 
 public class TweetLoaderFactory {
-	public static TweetLoader getTweetLoader(String encoding, String fileName) throws FileNotFoundException, UnsupportedEncodingException {
-		TweetLoader loader = null;
+	public static AbstractTweetLoader getTweetLoader(String encoding, String fileName) throws FileNotFoundException, UnsupportedEncodingException {
+		AbstractTweetLoader loader = null;
 		
 		switch (encoding.toUpperCase()) {
 		case "ASCII": 

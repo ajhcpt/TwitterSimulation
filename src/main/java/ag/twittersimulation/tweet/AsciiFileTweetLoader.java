@@ -9,7 +9,7 @@ import java.util.TreeMap;
 
 import ag.twittersimulation.user.User;
 
-public class AsciiFileTweetLoader extends TweetLoader {
+public class AsciiFileTweetLoader extends AbstractTweetLoader {
 BufferedReader reader;
 	
 	public AsciiFileTweetLoader(BufferedReader reader) {

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.TreeMap;
 
-public class AsciiFileUserLoader extends UserLoader {
+public class AsciiFileUserLoader extends AbstractUserLoader {
 	BufferedReader reader;
 	
 	public AsciiFileUserLoader(BufferedReader reader) {

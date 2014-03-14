@@ -25,7 +25,7 @@ public class User implements Comparable<User> {
 	public void AddFollower(ArrayList<String> followsList) {
 		if (follows != null) {		
 			for (String follow: followsList) {
-				if(!follows.contains(follow)) {
+				if (!follows.contains(follow)) {
 					follows.add(follow);
 				}
 			}
