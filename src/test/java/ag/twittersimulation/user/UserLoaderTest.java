@@ -28,7 +28,8 @@ public class UserLoaderTest {
 
 	@Test
 	public void testRemoveSpaces() {
-		fail("Not yet implemented");
+		String stringWithSpaces = " fsdf, fdfiij   998jnndDSA hdsdDD9 98 bn bv   v ";
+		assertEquals("fsdf,fdfiij998jnndDSAhdsdDD998bnbvv", UserLoader.RemoveSpaces(stringWithSpaces));
 	}
 	
 	@Test

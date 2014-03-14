@@ -1,7 +1,6 @@
 package ag.twittersimulation.output;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -15,39 +14,37 @@ public class OutputTweetsToConsole implements IOutputTweets {
 	@Override
 	public void OutputTweets(TreeMap<String, User> users, HashMap<User, ArrayList<Tweet>> tweets) {
 		for (Map.Entry<String, User> entry: users.entrySet()) {
-			String username = entry.getKey();
+			HashMap<User, ArrayList<Tweet>> unsortedUserTweetMap = new HashMap<User, ArrayList<Tweet>>();
 			User user = entry.getValue();
-			System.out.println(username);
+			System.out.println(user.getName());
 			
-			ArrayList<Tweet> usersTweetList = tweets.get(user);
-			if (usersTweetList != null) {
-				for (Tweet usersTweet: usersTweetList) {
-					StringBuilder tweetOutput = new StringBuilder();
-					tweetOutput.append('\t');
-					tweetOutput.append("@");
-					tweetOutput.append(username);
-					tweetOutput.append(": ");
-					tweetOutput.append(usersTweet.getTweet());
-					System.out.println(tweetOutput.toString());
-				}
-			}
-			
+			unsortedUserTweetMap.put(user, tweets.get(user));
+						
 			ArrayList<String> followsList = user.getFollows();			
 			if (followsList != null) {
 				for (String follows: followsList) {
-					ArrayList<Tweet> followsTweetsList = tweets.get(users.get(follows));
-					if (followsTweetsList != null) {
-						for (Tweet followsTweet: followsTweetsList) {
-							StringBuilder followsTweetOuput = new StringBuilder();
-							followsTweetOuput.append('\t');
-							followsTweetOuput.append("@");
-							followsTweetOuput.append(follows);
-							followsTweetOuput.append(": ");
-							followsTweetOuput.append(followsTweet.getTweet());
-							System.out.println(followsTweetOuput.toString());
-						}
+					user = users.get(follows);
+					unsortedUserTweetMap.put(user, tweets.get(user));
+				}
+			}
+			
+			TreeMap<Tweet, User> sortedTweetUserMap = new TreeMap<Tweet, User>();
+			for (Map.Entry<User, ArrayList<Tweet>> unsortedEntry: unsortedUserTweetMap.entrySet()) {
+				if(unsortedEntry.getValue() != null) {
+					for (Tweet tweet: unsortedEntry.getValue()) {
+						sortedTweetUserMap.put(tweet, unsortedEntry.getKey());
 					}
 				}
+			}
+			
+			for (Map.Entry<Tweet, User> sortedEntry: sortedTweetUserMap.entrySet()) {
+				StringBuilder output = new StringBuilder();
+				output.append('\t');
+				output.append("@");
+				output.append(sortedEntry.getValue().getName());
+				output.append(": ");
+				output.append(sortedEntry.getKey().getTweet());
+				System.out.println(output.toString());
 			}
 		}
 	}
