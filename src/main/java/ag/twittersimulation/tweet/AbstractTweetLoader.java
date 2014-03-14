@@ -7,7 +7,7 @@ import java.util.TreeMap;
 
 import ag.twittersimulation.user.User;
 
-public abstract class TweetLoader {
+public abstract class AbstractTweetLoader {
 	public abstract HashMap<User, ArrayList<Tweet>> LoadTweets(TreeMap<String, User> users) throws IOException;
 	
 	protected static String GetUsername(String tweet) {

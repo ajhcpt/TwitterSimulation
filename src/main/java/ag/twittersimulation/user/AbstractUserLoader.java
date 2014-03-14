@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.TreeMap;
 
-public abstract class UserLoader {
+public abstract class AbstractUserLoader {
 	public abstract TreeMap<String, User> LoadUsers() throws IOException;
 	
 	protected static String RemoveSpaces(String stringWithSpaces) {
@@ -18,7 +18,6 @@ public abstract class UserLoader {
 			}
 		}
 		return stringWithoutSpaces.toString();
-		
 	}
 	
 	protected static String GetFollowerName(String userFileLine) {
