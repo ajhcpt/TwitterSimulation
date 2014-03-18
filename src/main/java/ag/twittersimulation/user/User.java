@@ -8,11 +8,14 @@ public class User implements Comparable<User> {
 	
 	public User(String name) {
 		this.name = name;
+		this.follows = new ArrayList<String>();
 	}
 
 	public User(String name, ArrayList<String> follows) {
+		ArrayList<String> followsCopy = follows;
 		this.name = name;
-		this.follows = follows;
+		this.follows = new ArrayList<String>();
+		this.follows = followsCopy;
 	}
 
 	
@@ -23,7 +26,7 @@ public class User implements Comparable<User> {
 	}
 	
 	public void AddFollower(ArrayList<String> followsList) {
-		if (follows != null) {		
+		if (follows.size() != 0) {		
 			for (String follow: followsList) {
 				if (!follows.contains(follow)) {
 					follows.add(follow);
